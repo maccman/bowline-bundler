@@ -1,3 +1,10 @@
+## bowline-bundler
+
+This is a version of Bundler for Bowline apps.
+
+Below is the original Bundler README.
+
+
 ## Bundler : A gem to bundle gems
 
     Github:       http://github.com/wycats/bundler
