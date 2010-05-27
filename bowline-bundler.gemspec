@@ -66,6 +66,29 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.6}
   s.summary = %q{An easy way to vendor gem dependencies for Bowline apps}
+  s.test_files = [
+    "spec/bundler/cli_spec.rb",
+     "spec/bundler/directory_spec.rb",
+     "spec/bundler/dsl_spec.rb",
+     "spec/bundler/fetcher_spec.rb",
+     "spec/bundler/git_spec.rb",
+     "spec/bundler/installer_spec.rb",
+     "spec/bundler/manifest_file_spec.rb",
+     "spec/bundler/manifest_spec.rb",
+     "spec/bundler/runtime_spec.rb",
+     "spec/bundler/system_gems_spec.rb",
+     "spec/quality_spec.rb",
+     "spec/resolver/engine_spec.rb",
+     "spec/resolver/error_spec.rb",
+     "spec/resolver/fake_source_index_spec.rb",
+     "spec/resolver/prerelease_spec.rb",
+     "spec/spec_helper.rb",
+     "spec/support/builders.rb",
+     "spec/support/core_ext.rb",
+     "spec/support/helpers.rb",
+     "spec/support/matchers.rb",
+     "spec/support/path_utils.rb"
+  ]
 
   if s.respond_to? :specification_version then
     current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
