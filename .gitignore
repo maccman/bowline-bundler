@@ -1,0 +1,7 @@
+.DS_Store
+tmp
+pkg
+testing/Gemfile
+spec/fixtures/very-simple-binary/ext/Makefile
+spec/fixtures/very-simple-binary/ext/very-simple-binary.o
+spec/fixtures/very-simple-binary/ext/very_simple_binary.bundle

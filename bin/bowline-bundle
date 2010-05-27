@@ -1,0 +1,59 @@
+#!/usr/bin/env ruby
+
+require 'optparse'
+require File.join(File.dirname(__FILE__), *%w[.. lib bowline bundler])
+
+options = {}
+
+OptionParser.new do |opts|
+  opts.on('-m', '--manifest MANIFEST', "Specify the path to the manifest file") do |manifest, options|
+    options[:manifest] = manifest
+  end
+
+  opts.on('-u', '--update', "Force a remote check for newer gems") do
+    options[:update] = true
+  end
+
+  opts.on('--cached', "Only use cached gems when expanding the bundle") do
+    options[:cached] = true
+  end
+
+  opts.on('--cache GEM', "Specify a path to a .gem file to add to the bundled gem cache") do |gem, options|
+    options[:cache] = gem
+  end
+
+  opts.on('--prune-cache', "Removes all .gem files that are not a part of the bundle from the cache") do
+    options[:prune] = true
+  end
+
+  opts.on('--list', "List all gems that are part of the active bundle") do
+    options[:list] = true
+  end
+
+  opts.on('--list-outdated', "List all outdated gems that are part of the active bundle") do
+    options[:list_outdated] = true
+  end
+
+  opts.on('-b', '--build-options OPTION_FILE', "Specify a path to a yml file with build options for binary gems") do |option_file, options|
+    if File.exist?(option_file)
+      options[:build_options] = YAML.load_file(option_file)
+    end
+  end
+
+  opts.on('--only ENV', "Only expand the given environment.  To specify multiple environments, use --only multiple times.") do |env, options|
+    options[:only] ||= []
+    options[:only] << env
+  end
+end.parse!
+
+if options[:cache]
+  Bundler::CLI.run(:cache, options)
+elsif options[:prune]
+  Bundler::CLI.run(:prune, options)
+elsif options[:list]
+  Bundler::CLI.run(:list, options)
+elsif options[:list_outdated]
+  Bundler::CLI.run(:list_outdated, options)
+else
+  Bundler::CLI.run(:bundle, options)
+end

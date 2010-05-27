@@ -1,0 +1,4 @@
+require 'rbconfig'
+engine  = defined?(RUBY_ENGINE) ? RUBY_ENGINE : 'ruby'
+version = '1.9.1'
+require File.expand_path("../#{engine}/#{version}/environment", __FILE__)
