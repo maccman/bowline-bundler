@@ -19,7 +19,7 @@ require "bowline/bundler/dependency"
 require "bowline/bundler/remote_specification"
 
 module Bundler
-  VERSION = "0.0.2"
+  VERSION = "0.0.3"
 
   class << self
     attr_writer :logger
