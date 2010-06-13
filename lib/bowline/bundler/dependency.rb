@@ -6,8 +6,8 @@ module Bundler
     attr_accessor :source
 
     def initialize(name, options = {}, &block)
-      options.each do |k, v|
-        options[k.to_s] = v
+      options.dup.each do |key, value|
+        options[key.to_s] = options.delete(key)
       end
 
       super(name, options["version"] || ">= 0")
